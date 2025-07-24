@@ -21,9 +21,12 @@ import {
   Key,
   Smartphone,
   Search,
-  Zap
+  Zap,
+  Monitor,
+  Wifi
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import PlatformService, { PlatformInfo } from "@/services/PlatformService";
 
 interface ThreatStats {
   totalBlocked: number;
@@ -43,6 +46,8 @@ interface ProtectionModule {
 
 const SecurityDashboard = () => {
   const { toast } = useToast();
+  const [platformInfo, setPlatformInfo] = useState<PlatformInfo | null>(null);
+  const [isScanning, setIsScanning] = useState(false);
   const [threatStats, setThreatStats] = useState<ThreatStats>({
     totalBlocked: 1892,
     activeThreats: 8,
@@ -125,6 +130,45 @@ const SecurityDashboard = () => {
     }
   ]);
 
+  // Initialize platform on component mount
+  useEffect(() => {
+    const initPlatform = async () => {
+      const platformService = PlatformService.getInstance();
+      const info = await platformService.initializePlatform();
+      setPlatformInfo(info);
+      
+      toast({
+        title: `Guardian AI Initialized`,
+        description: `Running on ${info.platform} with ${info.capabilities.length} security modules`,
+      });
+    };
+    
+    initPlatform();
+  }, [toast]);
+
+  const performSystemScan = async () => {
+    setIsScanning(true);
+    const platformService = PlatformService.getInstance();
+    
+    try {
+      const scanResult = await platformService.performSystemScan();
+      
+      toast({
+        title: "System Scan Complete",
+        description: `Found ${scanResult.threats.length} threats. System health: ${scanResult.systemHealth}%`,
+        variant: scanResult.threats.length > 0 ? "destructive" : "default"
+      });
+    } catch (error) {
+      toast({
+        title: "Scan Failed",
+        description: "Unable to complete system scan",
+        variant: "destructive"
+      });
+    } finally {
+      setIsScanning(false);
+    }
+  };
+
   const [realTimeThreats] = useState([
     { type: 'Phishing Call', source: '+1-555-FRAUD', time: '2 mins ago', severity: 'high' },
     { type: 'Malicious Website', source: 'fake-bank.com', time: '5 mins ago', severity: 'critical' },
@@ -185,13 +229,59 @@ const SecurityDashboard = () => {
           <Shield className="w-8 h-8 text-primary" />
           <div>
             <h1 className="text-3xl font-bold text-foreground">Guardian AI</h1>
-            <p className="text-muted-foreground">AI-Powered Fraud Protection</p>
+            <p className="text-muted-foreground">
+              AI-Powered Fraud Protection {platformInfo && `• ${platformInfo.platform.toUpperCase()}`}
+              {platformInfo?.isRooted && <span className="text-threat ml-2">• ROOT DETECTED</span>}
+            </p>
           </div>
         </div>
-        <Button variant="outline" size="icon">
-          <Settings className="w-4 h-4" />
-        </Button>
+        <div className="flex space-x-2">
+          <Button 
+            variant="outline" 
+            onClick={performSystemScan}
+            disabled={isScanning}
+            className="flex items-center space-x-2"
+          >
+            <Search className={`w-4 h-4 ${isScanning ? 'animate-spin' : ''}`} />
+            <span>{isScanning ? 'Scanning...' : 'Deep Scan'}</span>
+          </Button>
+          <Button variant="outline" size="icon">
+            <Settings className="w-4 h-4" />
+          </Button>
+        </div>
       </div>
+
+      {/* Platform Status Card */}
+      {platformInfo && (
+        <Card className="bg-gradient-security border-primary/20">
+          <CardContent className="p-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-4">
+                <div className="p-2 rounded-lg bg-primary/10">
+                  <Monitor className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <h3 className="font-semibold">Platform Status</h3>
+                  <p className="text-sm text-muted-foreground">
+                    {platformInfo.deviceModel} • {platformInfo.osVersion}
+                  </p>
+                </div>
+              </div>
+              <div className="text-right">
+                <Badge 
+                  variant={platformInfo.isRooted ? "threat" : "safe"}
+                  className="mb-2"
+                >
+                  {platformInfo.isRooted ? "ROOTED" : "SECURE"}
+                </Badge>
+                <p className="text-xs text-muted-foreground">
+                  {platformInfo.capabilities.length} modules active
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      )}
 
       {/* Threat Statistics */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

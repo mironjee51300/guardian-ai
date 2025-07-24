@@ -1,73 +1,168 @@
-# Welcome to your Lovable project
+# Guardian AI - Cross-Platform Fraud Protection
 
-## Project info
+AI-powered fraud protection app with advanced threat detection for **Windows**, **Linux**, **Android**, and **rooted devices**.
+
+## 🛡️ Features
+
+- **Fraud Call Protection** - Block suspicious calls
+- **SMS Fraud Detection** - Detect spam and phishing SMS
+- **Email Security** - Phishing email detection
+- **Website Protection** - Malicious website blocking
+- **Mobile System Analysis** - Deep system scanning
+- **Root/Jailbreak Detection** - Enhanced security for modified devices
+- **Real-time Monitoring** - Live threat detection across all platforms
+
+## 🚀 Platform Support
+
+### ✅ Android
+- Full system analysis and malware detection
+- Root access detection and protection
+- App permission monitoring
+- Background process analysis
+- Network traffic monitoring
+
+### ✅ iOS  
+- Jailbreak detection
+- Certificate validation
+- App sandbox analysis
+- Network security monitoring
+
+### ✅ Windows/Linux Desktop
+- Process monitoring and analysis
+- File system protection
+- Registry monitoring (Windows)
+- Network firewall integration
+- Real-time system scanning
+
+### ✅ Web/PWA
+- Basic fraud protection
+- Website security analysis
+- Email and communication monitoring
+
+## 📱 Quick Start
+
+### For Mobile Development:
+
+1. **Export to GitHub** and clone the repository:
+   ```bash
+   git clone <your-repo-url>
+   cd guardian-ai
+   npm install
+   ```
+
+2. **Android Deployment:**
+   ```bash
+   npx cap add android
+   npx cap update android
+   npm run build
+   npx cap sync android
+   npx cap run android
+   ```
+
+3. **iOS Deployment (macOS only):**
+   ```bash
+   npx cap add ios
+   npx cap update ios
+   npm run build
+   npx cap sync ios
+   npx cap run ios
+   ```
+
+### For Desktop Development:
+
+4. **Windows/Linux (Electron):**
+   ```bash
+   npm install @capacitor-community/electron --save-dev
+   npx cap add @capacitor-community/electron
+   npm run build
+   npx cap sync @capacitor-community/electron
+   npx cap run @capacitor-community/electron
+   ```
+
+### Quick Build Script:
+
+```bash
+# Make script executable
+chmod +x scripts/build-platforms.sh
+
+# Build for specific platform
+./scripts/build-platforms.sh android
+./scripts/build-platforms.sh ios
+./scripts/build-platforms.sh electron
+./scripts/build-platforms.sh all
+```
+
+## 🔧 Root/Jailbreak Detection
+
+Guardian AI includes advanced detection for:
+
+- **Android Root Detection**: Detects su, busybox, Magisk, Xposed
+- **iOS Jailbreak Detection**: Identifies modified iOS systems
+- **System Integrity**: Monitors for unauthorized system modifications
+- **Enhanced Security**: Provides additional protection layers for modified devices
+
+## 🛠️ Development
+
+```bash
+npm run dev          # Start development server
+npm run build        # Build for production
+npx cap sync         # Sync with native platforms
+```
+
+## 📋 Requirements
+
+- **Android**: Android Studio, Android SDK
+- **iOS**: macOS, Xcode
+- **Desktop**: Node.js, npm
+- **All Platforms**: Modern web browser support
+
+## 🔒 Security Features by Platform
+
+| Feature | Android | iOS | Windows | Linux | Web |
+|---------|---------|-----|---------|-------|-----|
+| Fraud Call Protection | ✅ | ✅ | ✅ | ✅ | ✅ |
+| SMS Detection | ✅ | ✅ | ❌ | ❌ | ❌ |
+| System Analysis | ✅ | ✅ | ✅ | ✅ | ⚠️ |
+| Root Detection | ✅ | ✅ | ✅ | ✅ | ❌ |
+| Real-time Monitoring | ✅ | ✅ | ✅ | ✅ | ⚠️ |
+| Deep Malware Scan | ✅ | ⚠️ | ✅ | ✅ | ❌ |
+
+✅ Full Support | ⚠️ Limited Support | ❌ Not Available
+
+## 🌐 Deployment
+
+Guardian AI can be deployed as:
+- **Native Mobile Apps** (Android/iOS)
+- **Desktop Applications** (Windows/Linux via Electron)
+- **Progressive Web App** (Universal web deployment)
+- **Self-hosted** (Deploy to your own servers)
+
+---
+
+## Original Lovable Project Info
 
 **URL**: https://lovable.dev/projects/d2a18346-055e-48d2-848b-716cc355d450
 
+Built with ❤️ using React, TypeScript, Capacitor, and Tailwind CSS.
+
 ## How can I edit this code?
 
-There are several ways of editing your application.
+**Use Lovable**: Simply visit the [Lovable Project](https://lovable.dev/projects/d2a18346-055e-48d2-848b-716cc355d450) and start prompting.
 
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/d2a18346-055e-48d2-848b-716cc355d450) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+**Use your preferred IDE**: Clone this repo and push changes. Requires Node.js & npm.
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
 git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
 cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
 npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
+## Technologies Used
 
 - Vite
 - TypeScript
 - React
 - shadcn-ui
 - Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/d2a18346-055e-48d2-848b-716cc355d450) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+- Capacitor (for native mobile/desktop apps)

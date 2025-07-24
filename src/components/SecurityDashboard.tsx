@@ -16,7 +16,9 @@ import {
   Activity,
   Settings,
   Eye,
-  EyeOff
+  EyeOff,
+  Mail,
+  Key
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -39,8 +41,8 @@ interface ProtectionModule {
 const SecurityDashboard = () => {
   const { toast } = useToast();
   const [threatStats, setThreatStats] = useState<ThreatStats>({
-    totalBlocked: 1247,
-    activeThreats: 3,
+    totalBlocked: 1608,
+    activeThreats: 5,
     safeConnections: 8924,
     inactiveModules: 1
   });
@@ -77,13 +79,31 @@ const SecurityDashboard = () => {
       status: 'inactive',
       threatsBlocked: 0,
       isEnabled: false
+    },
+    {
+      id: 'email',
+      name: 'Email Fraud Detection',
+      icon: Mail,
+      status: 'active',
+      threatsBlocked: 294,
+      isEnabled: true
+    },
+    {
+      id: 'password',
+      name: 'Password Compromise Detection',
+      icon: Key,
+      status: 'blocked',
+      threatsBlocked: 67,
+      isEnabled: true
     }
   ]);
 
   const [realTimeThreats] = useState([
     { type: 'Phishing Call', source: '+1-555-FRAUD', time: '2 mins ago', severity: 'high' },
     { type: 'Malicious Website', source: 'fake-bank.com', time: '5 mins ago', severity: 'critical' },
-    { type: 'Spam SMS', source: '+1-888-SCAM', time: '12 mins ago', severity: 'medium' }
+    { type: 'Spam SMS', source: '+1-888-SCAM', time: '12 mins ago', severity: 'medium' },
+    { type: 'Phishing Email', source: 'noreply@fake-bank.com', time: '3 mins ago', severity: 'critical' },
+    { type: 'Compromised Password', source: 'user@email.com', time: '8 mins ago', severity: 'high' }
   ]);
 
   const toggleModule = (moduleId: string) => {

@@ -129,25 +129,9 @@ npx cap sync         # Sync with native platforms
 
 ✅ Full Support | ⚠️ Limited Support | ❌ Not Available
 
-## 🌐 Deployment
-
-Guardian AI can be deployed as:
-- **Native Mobile Apps** (Android/iOS)
-- **Desktop Applications** (Windows/Linux via Electron)
-- **Progressive Web App** (Universal web deployment)
-- **Self-hosted** (Deploy to your own servers)
-
----
-
-## Original Lovable Project Info
-
-**URL**: https://lovable.dev/projects/d2a18346-055e-48d2-848b-716cc355d450
 
 Built with ❤️ using React, TypeScript, Capacitor, and Tailwind CSS.
 
-## How can I edit this code?
-
-**Use Lovable**: Simply visit the [Lovable Project](https://lovable.dev/projects/d2a18346-055e-48d2-848b-716cc355d450) and start prompting.
 
 **Use your preferred IDE**: Clone this repo and push changes. Requires Node.js & npm.
 

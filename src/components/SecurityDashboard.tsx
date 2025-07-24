@@ -18,7 +18,10 @@ import {
   Eye,
   EyeOff,
   Mail,
-  Key
+  Key,
+  Smartphone,
+  Search,
+  Zap
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -41,8 +44,8 @@ interface ProtectionModule {
 const SecurityDashboard = () => {
   const { toast } = useToast();
   const [threatStats, setThreatStats] = useState<ThreatStats>({
-    totalBlocked: 1608,
-    activeThreats: 5,
+    totalBlocked: 1892,
+    activeThreats: 8,
     safeConnections: 8924,
     inactiveModules: 1
   });
@@ -95,6 +98,30 @@ const SecurityDashboard = () => {
       status: 'blocked',
       threatsBlocked: 67,
       isEnabled: true
+    },
+    {
+      id: 'mobile-system',
+      name: 'Mobile System Analysis',
+      icon: Smartphone,
+      status: 'active',
+      threatsBlocked: 152,
+      isEnabled: true
+    },
+    {
+      id: 'malware-scan',
+      name: 'Hidden Malware Detection',
+      icon: Search,
+      status: 'blocked',
+      threatsBlocked: 89,
+      isEnabled: true
+    },
+    {
+      id: 'hack-monitor',
+      name: 'Anti-Hacking Monitor',
+      icon: Zap,
+      status: 'active',
+      threatsBlocked: 43,
+      isEnabled: true
     }
   ]);
 
@@ -103,7 +130,10 @@ const SecurityDashboard = () => {
     { type: 'Malicious Website', source: 'fake-bank.com', time: '5 mins ago', severity: 'critical' },
     { type: 'Spam SMS', source: '+1-888-SCAM', time: '12 mins ago', severity: 'medium' },
     { type: 'Phishing Email', source: 'noreply@fake-bank.com', time: '3 mins ago', severity: 'critical' },
-    { type: 'Compromised Password', source: 'user@email.com', time: '8 mins ago', severity: 'high' }
+    { type: 'Compromised Password', source: 'user@email.com', time: '8 mins ago', severity: 'high' },
+    { type: 'Hidden Spyware', source: 'com.fake.cleaner', time: '1 min ago', severity: 'critical' },
+    { type: 'Root Access Attempt', source: 'Unknown Process', time: '4 mins ago', severity: 'critical' },
+    { type: 'Suspicious System Call', source: 'System Analysis', time: '6 mins ago', severity: 'high' }
   ]);
 
   const toggleModule = (moduleId: string) => {

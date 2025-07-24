@@ -17,6 +17,12 @@ const config: CapacitorConfig = {
       androidScaleType: "CENTER_CROP",
       showSpinner: true,
       spinnerColor: "#ffffff"
+    },
+    Device: {
+      // Enable device information access for system analysis
+    },
+    App: {
+      // Enable app state monitoring for security analysis
     }
   }
 };

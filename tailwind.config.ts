@@ -52,6 +52,27 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				// Security App Color System
+				threat: {
+					DEFAULT: 'hsl(var(--threat-blocked))',
+					foreground: 'hsl(var(--threat-blocked-foreground))',
+					bg: 'hsl(var(--threat-blocked-bg))'
+				},
+				safe: {
+					DEFAULT: 'hsl(var(--safe-active))',
+					foreground: 'hsl(var(--safe-active-foreground))',
+					bg: 'hsl(var(--safe-active-bg))'
+				},
+				inactive: {
+					DEFAULT: 'hsl(var(--inactive-grey))',
+					foreground: 'hsl(var(--inactive-grey-foreground))',
+					bg: 'hsl(var(--inactive-grey-bg))'
+				},
+				warning: {
+					DEFAULT: 'hsl(var(--warning-amber))',
+					foreground: 'hsl(var(--warning-amber-foreground))',
+					bg: 'hsl(var(--warning-amber-bg))'
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -67,6 +88,11 @@ export default {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
+			},
+			backgroundImage: {
+				'gradient-security': 'var(--gradient-security)',
+				'gradient-threat': 'var(--gradient-threat)',
+				'gradient-safe': 'var(--gradient-safe)',
 			},
 			keyframes: {
 				'accordion-down': {
@@ -84,11 +110,21 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'pulse-threat': {
+					'0%, 100%': { opacity: 1 },
+					'50%': { opacity: 0.7 }
+				},
+				'scan-line': {
+					'0%': { transform: 'translateX(-100%)' },
+					'100%': { transform: 'translateX(100%)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'pulse-threat': 'pulse-threat 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+				'scan-line': 'scan-line 2s linear infinite'
 			}
 		}
 	},

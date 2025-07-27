@@ -79,15 +79,69 @@ AI-powered fraud protection app with advanced threat detection for **Windows**, 
    npx cap run @capacitor-community/electron
    ```
 
-### Quick Build Script:
+## Installation & Deployment
 
+### Installer Files
+
+Guardian AI provides ready-to-install packages for all platforms:
+
+#### Download & Install
 ```bash
-# Make script executable
-chmod +x scripts/build-platforms.sh
+# Generate all installer files
+./scripts/build-platforms.sh all
 
-# Build for specific platform
-./scripts/build-platforms.sh android
-./scripts/build-platforms.sh ios
+# Platform-specific installers
+./scripts/build-platforms.sh android    # APK for Android
+./scripts/build-platforms.sh ios        # IPA for iOS
+./scripts/build-platforms.sh windows    # EXE for Windows
+./scripts/build-platforms.sh linux      # AppImage/DEB for Linux
+./scripts/build-platforms.sh macos      # DMG for macOS
+```
+
+#### Installation Instructions
+
+**📱 Android (APK)**
+```bash
+# Download guardian-ai-v1.0.0.apk from release/ folder
+# Enable "Unknown Sources" in Android settings
+# Install APK file on device
+adb install guardian-ai-v1.0.0.apk
+```
+
+**🍎 iOS (IPA)**
+```bash
+# Install via TestFlight or Xcode
+# Requires Apple Developer account for distribution
+ios-deploy --bundle guardian-ai-v1.0.0.ipa
+```
+
+**🪟 Windows (EXE)**
+```bash
+# Run installer as administrator
+guardian-ai-windows-setup-v1.0.0.exe
+# Follow installation wizard
+# Creates desktop shortcut and Start Menu entry
+```
+
+**🐧 Linux (AppImage)**
+```bash
+# Make executable and run
+chmod +x guardian-ai-linux-v1.0.0.AppImage
+./guardian-ai-linux-v1.0.0.AppImage
+
+# Or install DEB package
+sudo dpkg -i guardian-ai-linux-v1.0.0.deb
+```
+
+**🍎 macOS (DMG)**
+```bash
+# Open DMG file
+open guardian-ai-macos-v1.0.0.dmg
+# Drag Guardian AI to Applications folder
+# Run from Applications or Launchpad
+```
+
+### Quick Build Script
 ./scripts/build-platforms.sh electron
 ./scripts/build-platforms.sh all
 ```
